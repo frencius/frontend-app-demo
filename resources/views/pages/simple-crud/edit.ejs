@@ -1,0 +1,78 @@
+<%- contentFor('content') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Ubah Data</h4>
+        </div>
+        <div class="col-md-12">
+            <a href="/"><span class="label label-primary">Kembali</span></a>
+        </div>
+        <div class="col-md-12">
+            <form class="" id="edit-user" method="POST" action="#" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Nama Depan <span class="icon-danger">*</span></h6>
+                                <input type="text" name="firstname" id="firstname" value="" placeholder="Nama Depan" class="form-control border-input" required>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Nama Belakang <span class="icon-danger">*</span></h6>
+                                <input type="text" name="lastname" id="lastname" value="" placeholder="Nama Belakang" class="form-control border-input" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Alamat <span class="icon-danger">*</span></h6>
+                                <input type="text" name="address" id="address" value="" placeholder="Alamat " class="form-control border-input" required>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Email <span class="icon-danger">*</span></h6>
+                                <input type="email" name="email" id="email" value="" placeholder="Email" class="form-control border-input" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row buttons-row">
+                    <div class="col-md-4 col-sm-4 pull-right">
+                        <br>
+                        <button class="btn btn-primary btn-fill btn-block">Ubah</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- contentFor('addjs') %>
+<!-- data yang disimpan dilakukan oleh fungsi edit-user on submit di bawah ini (contoh 1) -->
+<!-- karena page ini adalah page edit, maka data terlebih dahulu ditampilkan pada form, barula bisa diubah.
+untuk menampilkan data, dapat dilakukan dengan langsung menuliskan variabel di atribut value, misal value= <%=firstname %> atau juga bisa menggunakan ajax call get sepertin contoh di bawah ini (contoh 1) -->
+    <script type="text/javascript"> 
+        // contoh 1
+        $.ajax({
+            url: '/',
+            success: function (resp) {
+                $("#firstname").val(resp.result.firstname);
+                $("#lastname").val(resp.result.lastname);
+                $("#email").val(resp.result.email);
+                $("#address").val(resp.result.address);
+            },
+            error: function (err) {
+                failure(err)
+            }
+        });
+
+        // contoh 2
+        $("#edit-user").on("submit", function(e) {
+            e.preventDefault(); 
+            $.ajax({
+                url: '',
+                data: $(this).serialize(),
+                method: "post",
+                success: function(obj, status, text) {
+                    window.location = window.location.origin;
+                }
+            })
+        })
+    </script>

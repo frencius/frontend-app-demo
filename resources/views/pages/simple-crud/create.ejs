@@ -1,0 +1,62 @@
+<%- contentFor('content') %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <h4>Tambah Data</h4>
+        </div>
+        <div class="col-md-12">
+            <a href="/simple-crud"><span class="label label-primary">Kembali</span></a>
+        </div>
+        <div class="col-md-12">
+            <form class="" id="create-user" method="POST" action="#" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Nama Depan <span class="icon-danger">*</span></h6>
+                                <input type="text" name="firstname" value="" placeholder="Nama Depan" class="form-control border-input" required>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Nama Belakang <span class="icon-danger">*</span></h6>
+                                <input type="text" name="lastname" value="" placeholder="Nama Belakang" class="form-control border-input" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Alamat <span class="icon-danger">*</span></h6>
+                                <input type="text" name="address" value="" placeholder="Alamat " class="form-control border-input" required>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Email <span class="icon-danger">*</span></h6>
+                                <input type="email" name="email" value="" placeholder="Email" class="form-control border-input" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row buttons-row">
+                    <div class="col-md-4 col-sm-4 pull-right">
+                        <br>
+                        <button class="btn btn-primary btn-fill btn-block">Tambah</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- contentFor('addjs') %>
+<!-- contoh script ajax post untuk menyimpan data. di-trigger ketika on submit button form -->
+<script type="text/javascript">    
+    $("#create-user").on("submit", function(e) {
+        // preventdefault berfungsi untuk prevent event default form agar aksi yang dilakukan melalui fungsi ini, bukan action form
+        e.preventDefault(); 
+        $.ajax({
+            url: '/',
+            data: $(this).serialize(),
+            method: "post",
+            success: function(obj, status, text) {
+                window.location = window.location.origin;
+            }
+        })
+    })
+</script>

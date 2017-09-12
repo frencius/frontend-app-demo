@@ -1,0 +1,56 @@
+<%- contentFor('content') %>
+<div class="container">
+    <br>
+    <a href="/simple-crud/create"><span class="label label-primary">Tambah</span></a><br/><br/>
+    <div class="table-responsive">
+        <table class="table table-sm" id="data-table-target">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Email</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<%- contentFor('addjs') %>
+<script type="text/javascript">
+ $("#data-table-target").DataTable({
+    'processing' : true,
+    'serverSide' : true,
+    'ajax' : '/',
+    "columns": [
+    { 
+        sortable: true
+        , searchable : true
+        , render : function (data, type, row) {
+            return row.name;
+        }
+    }
+    , { 
+        searchable : true
+        , sortable: true
+        , render : function (data, type, row) {
+            return row.address;
+        }
+    }
+    , { 
+        searchable : true
+        , sortable: true
+        , render : function (data, type, row) {
+            return row.email;
+        }
+    }
+    , { 
+        searchable : false
+        , sortable: false
+        , render : function (data, type, row) {
+            return "<a href='#/simple-crud/edit' title='ubah'>ubah</a><a href='#' title='hapus'>hapus</a>";
+        }
+    }
+    ]
+});
+</script>
