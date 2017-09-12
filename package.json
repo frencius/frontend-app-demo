@@ -1,0 +1,22 @@
+{
+  "name": "example-demo",
+  "version": "1.0.0",
+  "description": "demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "-"
+  },
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "keywords": [
+    "-"
+  ],
+  "author": "frencius",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-ejs-layouts": "^2.3.1"
+  }
+}
