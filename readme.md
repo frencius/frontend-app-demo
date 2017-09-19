@@ -1,2 +1,2 @@
-this application is used to demonstrate usage of vue.js + webpack + sass
+this application is used to demonstrate single frontend application project using nodejs + ejs + vue + webpack + sass + grommet
 
